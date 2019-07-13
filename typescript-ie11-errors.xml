@@ -1,0 +1,28 @@
+<component name="InspectionProjectProfileManager">
+  <profile version="1.0">
+    <option name="myName" value="TypeScript IE11 errors" />
+    <inspection_tool class="Eslint" enabled="true" level="WARNING" enabled_by_default="true" />
+    <inspection_tool class="JSEqualityComparisonWithCoercion.TS" enabled="true" level="WARNING" enabled_by_default="true" />
+    <inspection_tool class="SSBasedInspection" enabled="true" level="ERROR" enabled_by_default="true">
+      <replaceConfiguration name="IE11 does not support Object.entries. Replace it with a safe function." text="$object$.entries();" recursive="false" caseInsensitive="true" type="TypeScript" reformatAccordingToStyle="false" shortenFQN="false" replacement="function $object$Polyfill(obj) {&#xA;  const keys = $object$.keys(obj);&#xA;&#xA;  const keyValuePairs = keys.map(key =&gt; {&#xA;    const value = obj[key];&#xA;&#xA;    return [key, value];&#xA;  });&#xA;&#xA;    return keyValuePairs;&#xA;};">
+        <constraint name="__context__" target="true" within="" contains="" />
+        <constraint name="object" within="" contains="" />
+      </replaceConfiguration>
+      <replaceConfiguration name="IE11 does not support Object.values. Replace it with a safe function." text="$object$.values()" recursive="false" caseInsensitive="true" type="TypeScript" reformatAccordingToStyle="false" shortenFQN="false" replacement="$object$.keys(obj).map(e =&gt; obj[e])">
+        <constraint name="__context__" within="" contains="" />
+        <constraint name="object" within="" contains="" />
+      </replaceConfiguration>
+      <replaceConfiguration name="IE11 does not support Array.flat. Replace it with a safe function." text="$array$.flat();&#xA;" recursive="false" caseInsensitive="true" type="TypeScript" reformatAccordingToStyle="false" shortenFQN="false" replacement="const flattened = $array$.reduce(function(a, b) {&#xA;  return a.concat(b);&#xA;});">
+        <constraint name="__context__" within="" contains="" />
+        <constraint name="array" within="" contains="" />
+      </replaceConfiguration>
+      <replaceConfiguration name="IE11 does not support Array.findIndex. Replace it with a safe function." text="$array$.findIndex($variable$);" recursive="false" caseInsensitive="true" type="TypeScript" reformatAccordingToStyle="false" shortenFQN="false" replacement="let index = -1;&#xA;$array$.some(function(el, i) {&#xA;  if (el === $variable$) {&#xA;    index = i;&#xA;    return true;&#xA;  }&#xA;});">
+        <constraint name="__context__" within="" contains="" />
+        <constraint name="array" within="" contains="" />
+        <constraint name="variable" within="" contains="" />
+      </replaceConfiguration>
+    </inspection_tool>
+    <inspection_tool class="Stylelint" enabled="true" level="ERROR" enabled_by_default="true" />
+    <inspection_tool class="TsLint" enabled="true" level="WARNING" enabled_by_default="true" />
+  </profile>
+</component>
